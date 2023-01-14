@@ -96,39 +96,23 @@ $(function () {
     $('#hour-17').addClass('past')
   }
   function saveEvent(event){
-      var toDolist = localStorage.getItem('todolist');
-      if (toDolist) {
-        toDolist = JSON.parse(toDolist);
-      } else {
-        toDolist = ['','','','','','','','',''];
-      }
-      var textEvent = $(this).parent().children().eq(1).val();
-      var Id = $(this).parent().attr("id");
-      var timeArray = Id.split('-');
-      var index = parseInt(timeArray[1])-9;
-      console.log(index);
-      toDolist[index] = textEvent;
-      console.log(toDolist);
+    var text = $(this).siblings('#text').val();
+    console.log(text);
+    var hour = $(this).parent().attr('id');
+    console.log('time: ', hour);
+    localStorage.setItem(hour,text);
+}
+$('#hour-9 #text').val(localStorage.getItem('hour-9'));
+$('#hour-10 #text').val(localStorage.getItem('hour-10'));
+$('#hour-11 #text').val(localStorage.getItem('hour-11'));
+$('#hour-12 #text').val(localStorage.getItem('hour-12'));
+$('#hour-13 #text').val(localStorage.getItem('hour-13'));
+$('#hour-14 #text').val(localStorage.getItem('hour-14'));
+$('#hour-15 #text').val(localStorage.getItem('hour-15'));
+$('#hour-16 #text').val(localStorage.getItem('hour-16'));
+$('#hour-17 #text').val(localStorage.getItem('hour-17'));
       
-      localStorage.setItem('todolist', JSON.stringify(toDolist));
-      
-  }
-  function readEventFromStorage() {
-    var toDolist = localStorage.getItem('todo');
-    
-    if (toDolist) {
-      toDolist = JSON.parse(toDolist);
-      printEventData(toDoList);
-    }
-    
-  }
-  //function printEventData(toDolist){
-    
-   // for ( var i = 0 ; i < toDolist.length ; i++){
-      // TODO:
-    
-    //}
-  //}
+  
   
   
 
@@ -141,7 +125,7 @@ $(function () {
     var rightNow = dayjs().format('dddd,MMMM DD');
     timeDisplayEl.text(rightNow);
   }
-  readEventFromStorage()
+  
   displayTime();
   
   saveBtn.on('click',saveEvent);
