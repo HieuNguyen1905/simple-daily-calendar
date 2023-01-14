@@ -122,13 +122,13 @@ $(function () {
     }
     
   }
-  function printEventData(toDoList){
+  //function printEventData(toDolist){
     
-    for ( var i = 0 ; i < toDolist.length ; i++){
+   // for ( var i = 0 ; i < toDolist.length ; i++){
       // TODO:
     
-    }
-  }
+    //}
+  //}
   
   
 
